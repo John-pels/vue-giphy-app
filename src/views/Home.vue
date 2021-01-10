@@ -4,7 +4,6 @@
     <container>
       <Form />
       <ListItems />
-      <!-- <Spinner /> -->
     </container>
   </div>
 </template>
@@ -14,14 +13,12 @@
 import Form from "@/components/Form";
 import Container from "@/components/container";
 import ListItems from "@/components/ListItems";
-// import Spinner from "@/components/Spinner";
 
 export default {
   components: {
     Form,
     Container,
     ListItems,
-    // Spinner,
   },
 };
 </script>

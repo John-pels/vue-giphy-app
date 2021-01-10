@@ -1,18 +1,30 @@
 <template>
-  <div class="card">
+  <div class="card" @click="getGifDetails(gif)">
     <div class="img-wrapper">
-      <img
-        src="https://images.unsplash.com/photo-1602524815920-35f31875e44c?ixid=MXwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
-        alt="gif"
-        class="gif"
-      />
+      <router-link :to="{ name: 'Gif Details', params: { id: gif.id } }">
+        <img
+          :src="gif.images.fixed_height_downsampled.url"
+          alt="gif"
+          class="gif"
+        />
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "Card",
+  props: {
+    gif: {
+      type: Object,
+      default: () => {},
+    },
+  },
+  methods: {
+    ...mapActions(["getGifDetails"]),
+  },
 };
 </script>
 
@@ -41,6 +53,9 @@ export default {
 @media (max-width: 768px) {
   .card {
     width: 45%;
+  }
+  .card:hover {
+    transform: none;
   }
 }
 </style>

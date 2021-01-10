@@ -2,18 +2,20 @@
   <section class="gif-details">
     <div class="img-wrapper">
       <img
-        src="https://images.unsplash.com/photo-1602524815920-35f31875e44c?ixid=MXwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
+        :src="gifDetails.images.fixed_height_downsampled.url"
         alt="gif details"
         class="image"
       />
     </div>
     <div class="info">
-      <p>Gif: Yes yes yes</p>
-      <p>Name: Yes yes yes</p>
-      <p>Gif Type: Yes yes yes</p>
+      <p>Gif Title: {{ gifDetails.title }}</p>
+      <p>Gif Type: {{ gifDetails.type }}</p>
     </div>
     <p>
-      <a href="https://twitter.com" class="btn-download" target="_blank"
+      <a
+        :href="gifDetails.images.fixed_height_downsampled.url"
+        class="btn-download"
+        target="_blank"
         >Download</a
       >
     </p>
@@ -24,8 +26,15 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "GifDetails",
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapState(["gifDetails"]),
+  },
 };
 </script>
 
